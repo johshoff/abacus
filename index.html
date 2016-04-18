@@ -276,32 +276,36 @@
 
 		window.add_answer = window.answer + window.number_to_add;
 
-		window.addEventListener('keypress', function (e) {
+		window.addEventListener('keydown', function (e) {
 
 			var d = digit_from_number(window.last_graphed, window.place_with_focus);
 
-			switch (e.keyCode) {
-				case 110: // (j) n
+			switch (e.code) {
+				case "KeyJ":
+				case "ArrowLeft":
 					window.place_with_focus *= 10;
 					break;
-				case 117: // (i) u
+				case "KeyI":
+				case "ArrowUp":
 					if ((d == 4) || (d == 9)) {
 						window.last_graphed -= window.place_with_focus * 4;
 					} else {
 						window.last_graphed += window.place_with_focus * 1;
 					}
 					break;
-				case 101: // (k) e
+				case "KeyK":
+				case "ArrowDown":
 					if ((d == 0) || (d == 5)) {
 						window.last_graphed += window.place_with_focus * 4;
 					} else {
 						window.last_graphed -= window.place_with_focus * 1;
 					}
 					break;
-				case 105: // (l) i
+				case "KeyL":
+				case "ArrowRight":
 					window.place_with_focus /= 10;
 					break;
-				case 32: // (space)
+				case "Space":
 					if (d > 4) {
 						window.last_graphed -= window.place_with_focus * 5;
 					} else {
